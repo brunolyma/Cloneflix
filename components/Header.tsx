@@ -21,6 +21,8 @@ export default function Header() {
           <li className="headerlink">My List</li>
         </ul>
       </div>
+
+      <div></div>
     </header>
   );
 }
