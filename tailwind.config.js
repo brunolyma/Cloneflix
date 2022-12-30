@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         body: "#141414",
+        dark: "#010511",
         light: "#e5e5e5",
         "light-hover": "#b3b3b3",
       },
