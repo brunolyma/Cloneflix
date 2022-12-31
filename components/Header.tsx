@@ -28,28 +28,30 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`${isScrolled && "bg-body"}`}>
-      <div className="flex items-center space-x-2 md:space-x-10">
+    <header
+      className={`bg-gradient-to-b from-dark/80 to-transparent ${
+        isScrolled && "bg-body"
+      }`}
+    >
+      <nav className="flex items-center space-x-2 md:space-x-10">
         <Link href={"/"}>
           <Image
             src={netflixLogo}
             alt="netflix logo"
-            width={100}
-            height={100}
-            className="cursor-pointer object-contain"
+            className="cursor-pointer object-contain w-16 lg:w-24"
           />
         </Link>
 
         <ul className="hidden space-x-4 md:flex">
-          <li className="headerlink">Home</li>
-          <li className="headerlink">Tv Shows</li>
-          <li className="headerlink">Movies</li>
-          <li className="headerlink">New & Popular</li>
-          <li className="headerlink">My List</li>
+          <li className="navlink">Home</li>
+          <li className="navlink">Tv Shows</li>
+          <li className="navlink">Movies</li>
+          <li className="navlink">New & Popular</li>
+          <li className="navlink">My List</li>
         </ul>
-      </div>
+      </nav>
 
-      <div className=" flex items-center space-x-4 text-sm font-light">
+      <nav className=" flex items-center space-x-4 text-sm font-light">
         <SearchIcon className="hidden h-6 w-6 md:inline" />
         <p className=" hidden lg:inline">Kids</p>
         <BellIcon className=" h-6 w-6" />
@@ -62,7 +64,7 @@ export default function Header() {
             className="cursor-pointer rounded"
           />
         </Link>
-      </div>
+      </nav>
     </header>
   );
 }

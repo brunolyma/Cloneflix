@@ -40,7 +40,7 @@ export default function Home({
 
       <Header />
       <main>
-        <Banner />
+        <Banner netflixOriginals={netflixOriginals} />
         <section>{/* Row */}</section>
       </main>
     </div>
