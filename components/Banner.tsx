@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { Movie } from "../typings";
 import { baseURl } from "../constants/movie";
 
+import { FaPlay } from "react-icons/fa";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+
 interface Props {
   netflixOriginals: Movie[];
 }
@@ -18,7 +21,7 @@ export default function Banner({ netflixOriginals }: Props) {
   }, [netflixOriginals]);
 
   return (
-    <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12">
+    <div className="flex flex-col space-y-2 py-16 w-[60%] md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-16">
       <div className=" absolute top-0 left-0 -z-10 w-screen h-[95vh]">
         <Image
           className="object-cover"
@@ -28,12 +31,25 @@ export default function Banner({ netflixOriginals }: Props) {
         />
       </div>
 
-      <h1 className=" font-bold text-2xl md:text-4xl lg:text-7xl">
+      <h1 className=" font-bold text-2xl md:text-4xl lg:text-6xl">
         {movie?.title || movie?.name || movie?.original_name}
       </h1>
-      <p className=" max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl">
+      <p className=" max-w-xs text-xs text-shadow-md md:max-w-lg md:text-base lg:max-w-2xl lg:text-xl">
         {movie?.overview}
       </p>
+
+      <div className="flex space-x-3">
+        <button className="bannerButton bg-white text-black">
+          <FaPlay className="h-4 w-4 md:h-7 md:w7" /> Play
+        </button>
+        <button className="bannerButton bg-[gray]/70 text-white hover:bg-button/50">
+          <AiOutlineInfoCircle
+            className=" h-5 w-5 md:h-8 md:w8
+          "
+          />{" "}
+          More Info
+        </button>
+      </div>
     </div>
   );
 }

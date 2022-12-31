@@ -4,6 +4,8 @@ import Banner from "../components/Banner";
 import Header from "../components/Header";
 import { GetServerSideProps } from "next";
 import { Movie } from "../typings";
+import Row from "../components/Row";
+import { listenerCount } from "process";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -39,9 +41,20 @@ export default function Home({
       </Head>
 
       <Header />
-      <main>
+      <main className="relative pl-[4%] pb-24 lg:space-y-24">
         <Banner netflixOriginals={netflixOriginals} />
-        <section>{/* Row */}</section>
+        <section>
+          <Row title="Trending Now" movies={trendingNow} />
+          <Row title="Top Rated" movies={topRated} />
+          <Row title="Action Thrillers" movies={actionMovies} />
+          {/* My List */}
+          {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
+
+          <Row title="Comedies" movies={comedyMovies} />
+          <Row title="Scary Movies" movies={horrorMovies} />
+          <Row title="Romance Movies" movies={romanceMovies} />
+          <Row title="Documentaries" movies={documentaries} />
+        </section>
       </main>
     </div>
   );

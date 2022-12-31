@@ -4,16 +4,24 @@
 
 @layer base {
   body {
-    @apply bg-body text-white;
+    @apply bg-body text-white !scrollbar-thin !scrollbar-thumb-rounded-md !scrollbar-track-rounded-md !scrollbar-track-transparent !scrollbar-thumb-red-600/60 transition-colors duration-500 hover:!scrollbar-thumb-red-600;
   }
 
   header {
-    @apply flex items-center justify-between h-10 w-full fixed top-0 z-50 px-[4%] py-4 transition-all lg:h-16 lg:px-10 lg:py-6;
+    @apply flex items-center justify-between h-10 w-full fixed top-0 z-50 px-[4%] py-4 transition-all lg:h-16 lg:py-6;
   }
 }
 
 @layer components {
   .navlink {
     @apply text-light text-[10px] transition-colors duration-[400] lg:text-sm hover:text-light-hover cursor-pointer;
+  }
+
+  .bannerButton {
+    @apply flex items-center gap-x-2 rounded px-5 py-1 text-[10px] font-medium whitespace-nowrap transition hover:bg-opacity-75 md:px-8 md:text-sm lg:text-lg;
+  }
+
+  .arrowIcon {
+    @apply absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-125 group-hover:opacity-100;
   }
 }
