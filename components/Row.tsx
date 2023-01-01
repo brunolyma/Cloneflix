@@ -12,10 +12,23 @@ interface Props {
 }
 
 export default function Row({ title, movies }: Props) {
-  const rowRef = useRef(null);
+  const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 
-  const handleClick = (direction: string) => {};
+  const handleClick = (direction: string) => {
+    setIsMoved(true);
+
+    if (rowRef.current) {
+      const { scrollLeft, clientWidth } = rowRef.current;
+
+      const scrollTo =
+        direction === "left"
+          ? scrollLeft - clientWidth
+          : scrollLeft + clientWidth;
+
+      rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" });
+    }
+  };
 
   return (
     <div className=" h-40 space-y-0.5 md:space-y-2">
@@ -24,7 +37,7 @@ export default function Row({ title, movies }: Props) {
       </h2>
       <div className="group relative md:-ml-2">
         <ChevronLeftIcon
-          className="arrowIcon"
+          className="arrowIcon left-2"
           onClick={() => handleClick("left")}
         />
 
@@ -38,7 +51,7 @@ export default function Row({ title, movies }: Props) {
         </div>
 
         <ChevronRightIcon
-          className="arrowIcon"
+          className="arrowIcon right-2"
           onClick={() => handleClick("right")}
         />
       </div>
