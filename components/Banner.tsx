@@ -14,6 +14,25 @@ interface Props {
 export default function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
 
+  function backgroundImage() {
+    if (movie?.backdrop_path === null || movie?.backdrop_path === undefined)
+      return {
+        backgroundImage: `https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      };
+
+    return {
+      backgroundImage: `${baseURl}${
+        movie?.backdrop_path || movie?.poster_path
+      }`,
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+    };
+  }
+
   useEffect(() => {
     setMovie(
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
@@ -25,7 +44,7 @@ export default function Banner({ netflixOriginals }: Props) {
       <div className=" absolute top-0 left-0 -z-10 w-screen h-[95vh]">
         <Image
           className="object-cover"
-          src={`${baseURl}${movie?.backdrop_path || movie?.poster_path}`}
+          src={backgroundImage().backgroundImage}
           alt={`cover of ${movie?.title}`}
           fill
         />

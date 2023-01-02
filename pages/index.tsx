@@ -29,7 +29,7 @@ export default function Home({
   documentaries,
 }: Props) {
   return (
-    <div className=" relative h-screen bg-gradient-to-b from-gray-900/10 to-dark lg:h-[140vh]">
+    <div className=" relative h-screen bg-gradient">
       <Head>
         <title>Home – Cloneflix</title>
         <meta
@@ -43,7 +43,7 @@ export default function Home({
       <Header />
       <main className="relative pl-[4%] pb-24 lg:space-y-24">
         <Banner netflixOriginals={netflixOriginals} />
-        <section>
+        <section className=" md:space-y-20">
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />

@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <header
-      className={`bg-gradient-to-b from-dark/80 to-transparent ${
+      className={`bg-gradient-to-b from-dark/60 to-transparent ${
         isScrolled && "bg-body"
       }`}
     >
