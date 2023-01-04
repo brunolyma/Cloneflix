@@ -3,11 +3,13 @@ import { BellIcon, SearchIcon } from "@heroicons/react/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 import netflixLogo from "../public/netflix-logo.svg";
 import netflixProfile from "../public/netflix-profile.webp";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,15 +57,16 @@ export function Header() {
         <SearchIcon className="hidden h-6 w-6 md:inline" />
         <p className=" hidden lg:inline">Kids</p>
         <BellIcon className=" h-6 w-6" />
-        <Link href={"/accounts"}>
-          <Image
-            src={netflixProfile}
-            alt="netflix logo"
-            width={32.1}
-            height={32.1}
-            className="cursor-pointer rounded"
-          />
-        </Link>
+        {/* <Link href={"/accounts"}> */}
+        <Image
+          onClick={logout}
+          src={netflixProfile}
+          alt="netflix logo"
+          width={32.1}
+          height={32.1}
+          className="cursor-pointer rounded"
+        />
+        {/* </Link> */}
       </nav>
     </header>
   );
