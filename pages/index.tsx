@@ -1,11 +1,14 @@
 import Head from "next/head";
-import { requests } from "../utils/requests";
+import { GetServerSideProps } from "next";
+import { useRecoilValue } from "recoil";
 import { Banner } from "../components/Banner";
 import { Header } from "../components/Header";
-import { GetServerSideProps } from "next";
-import { Movie } from "../typings";
 import { Row } from "../components/Row";
+import { requests } from "../utils/requests";
+import { Movie } from "../typings";
 import { useAuth } from "../hooks/useAuth";
+import { modalState } from "../atoms/modalAtom";
+import { Modal } from "../components/Modal";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -28,7 +31,8 @@ export default function Home({
   romanceMovies,
   documentaries,
 }: Props) {
-  const { logout, loading } = useAuth();
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalState);
 
   if (loading) return null;
 
@@ -60,6 +64,7 @@ export default function Home({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <Modal />}
     </div>
   );
 }

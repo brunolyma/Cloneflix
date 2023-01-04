@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* base tags html */
 @layer base {
   body {
     @apply bg-body text-white !scrollbar-thin !scrollbar-thumb-rounded-md !scrollbar-track-rounded-md !scrollbar-track-transparent !scrollbar-thumb-red-600/60 transition-colors duration-500 hover:!scrollbar-thumb-red-600;
@@ -12,6 +13,7 @@
   }
 }
 
+/* custom classNames */
 @layer components {
   .navlink {
     @apply text-light text-[10px] transition-colors duration-[400] lg:text-sm hover:text-light-hover cursor-pointer;
@@ -26,6 +28,10 @@
   }
 
   .inputLogin {
-    @apply w-full rounded bg-input px-5 py-3.5 placeholder-placeholder outline-none focus:bg-focus;
+    @apply w-full rounded bg-input px-5 py-3.5 placeholder-gray outline-none focus:bg-focus;
+  }
+
+  .modalButton {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-gray bg-modal/60 transition hover:border-white hover:bg-white/10;
   }
 }

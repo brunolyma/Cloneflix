@@ -3,21 +3,24 @@ import { useEffect, useState } from "react";
 
 import { Movie } from "../typings";
 import { baseURl } from "../constants/movie";
+import { modalState, movieState } from "../atoms/modalAtom";
+import { useRecoilState } from "recoil";
 
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
-
 interface Props {
   netflixOriginals: Movie[];
 }
 
 export function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
+  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const [showModal, setShowModal] = useRecoilState(modalState);
 
   function backgroundImage() {
     if (movie?.backdrop_path === null || movie?.backdrop_path === undefined)
       return {
-        backgroundImage: ``,
+        backgroundImage: "/public/screen-loading.jpg",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -47,6 +50,7 @@ export function Banner({ netflixOriginals }: Props) {
           src={backgroundImage().backgroundImage}
           alt={`cover of ${movie?.title}`}
           fill
+          priority
         />
       </div>
 
@@ -61,7 +65,13 @@ export function Banner({ netflixOriginals }: Props) {
         <button className="bannerButton bg-white text-black">
           <FaPlay className="h-4 w-4 md:h-7 md:w7" /> Play
         </button>
-        <button className="bannerButton bg-[gray]/70 text-white hover:bg-button/50">
+        <button
+          className="bannerButton bg-[gray]/70 text-white hover:bg-button/50"
+          onClick={() => {
+            setCurrentMovie(movie);
+            setShowModal(true);
+          }}
+        >
           <AiOutlineInfoCircle
             className=" h-5 w-5 md:h-8 md:w8
           "
