@@ -11,13 +11,13 @@ interface Props {
   netflixOriginals: Movie[];
 }
 
-export default function Banner({ netflixOriginals }: Props) {
+export function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
 
   function backgroundImage() {
     if (movie?.backdrop_path === null || movie?.backdrop_path === undefined)
       return {
-        backgroundImage: `https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png`,
+        backgroundImage: ``,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

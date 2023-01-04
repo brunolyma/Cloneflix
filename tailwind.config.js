@@ -9,8 +9,13 @@ module.exports = {
       colors: {
         body: "#141414",
         dark: "#010511",
+        input: "#333",
+        placeholder: "#808080",
+        focus: "#454545",
         light: "#e5e5e5",
+        netflix: "#e50914",
         "light-hover": "#b3b3b3",
+        signup: "#737373",
         button: "#6d6d6e70",
       },
       backgroundImage: {

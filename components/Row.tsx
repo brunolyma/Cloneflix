@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { Movie } from "../typings";
-import Thumbnail from "./Thumbnail";
+import { Thumbnail } from "./Thumbnail";
 
 interface Props {
   // When using firebase
@@ -11,7 +11,7 @@ interface Props {
   movies: Movie[];
 }
 
-export default function Row({ title, movies }: Props) {
+export function Row({ title, movies }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
 

@@ -1,11 +1,10 @@
 import Head from "next/head";
 import { requests } from "../utils/requests";
-import Banner from "../components/Banner";
-import Header from "../components/Header";
+import { Banner } from "../components/Banner";
+import { Header } from "../components/Header";
 import { GetServerSideProps } from "next";
 import { Movie } from "../typings";
-import Row from "../components/Row";
-import { listenerCount } from "process";
+import { Row } from "../components/Row";
 
 interface Props {
   netflixOriginals: Movie[];

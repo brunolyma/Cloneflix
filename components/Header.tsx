@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import netflixLogo from "../public/netflix-logo.svg";
 import netflixProfile from "../public/netflix-profile.webp";
 
-export default function Header() {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
