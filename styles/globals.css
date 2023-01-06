@@ -32,6 +32,10 @@
   }
 
   .modalButton {
-    @apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-gray bg-modal/60 transition hover:border-white hover:bg-white/10;
+    @apply flex h-7 w-7 md:h-10 md:w-10 items-center justify-center rounded-full border-2 border-gray bg-modal/60 transition hover:border-white hover:bg-white/10;
+  }
+
+  .modalIcon {
+    @apply w-5 h-5 md:w-7 md:h-7;
   }
 }

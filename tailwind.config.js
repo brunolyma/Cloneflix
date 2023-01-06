@@ -19,6 +19,7 @@ module.exports = {
         "light-hover": "#b3b3b3",
         signup: "#737373",
         button: "#6d6d6e70",
+        "button-player": "#e6e6e6",
       },
       backgroundImage: {
         gradient:
