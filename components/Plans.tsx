@@ -1,10 +1,13 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 
 import netflixLogo from "../public/netflix-logo.svg";
 
 export function Plans() {
+  const { logout } = useAuth();
+
   return (
     <>
       <Head>
@@ -27,7 +30,10 @@ export function Plans() {
             className="cursor-pointer object-contain"
           />
         </Link>
-        <button className=" text-lg font-medium hover:underline">
+        <button
+          className=" text-lg font-medium hover:underline"
+          onClick={logout}
+        >
           Sign Out
         </button>
       </header>

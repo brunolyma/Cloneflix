@@ -25,7 +25,6 @@ export default function Login() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data);
     if (login) {
       await signIn(data.email, data.password);
     } else {
@@ -49,6 +48,7 @@ export default function Login() {
           src={netflixLogin}
           alt="catalog netflix"
           fill
+          sizes="100%"
           className=" -z-10 !hidden opacity-60 object-cover sm:!inline"
         />
 
