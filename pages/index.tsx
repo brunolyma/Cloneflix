@@ -38,7 +38,7 @@ export default function Home({
 
   if (loading || subscription === null) return null;
 
-  // if (!subscription) return <Plans />
+  if (!subscription) return <Plans />;
 
   return (
     <div className=" relative h-screen bg-gradient">
