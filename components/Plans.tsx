@@ -1,12 +1,21 @@
+import { CheckIcon } from "@heroicons/react/outline";
+import { Product } from "@stripe/firestore-stripe-payments/lib/product";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 import netflixLogo from "../public/netflix-logo.svg";
+import { Table } from "./Table";
 
-export function Plans() {
+interface Props {
+  products: Product[];
+}
+
+export function Plans({ products }: Props) {
   const { logout } = useAuth();
+  const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2]);
 
   return (
     <>
@@ -25,9 +34,7 @@ export function Plans() {
           <Image
             src={netflixLogo}
             alt="netflix logo"
-            width={150}
-            height={90}
-            className="cursor-pointer object-contain"
+            className="cursor-pointer w-[150px] h-[90px] object-contain"
           />
         </Link>
         <button
@@ -37,6 +44,49 @@ export function Plans() {
           Sign Out
         </button>
       </header>
+
+      <main className=" max-w-5xl pt-28 pb-12 px-5 transition-all md:px-10">
+        <h1 className=" mb-3 text-3xl font-medium">
+          Choose the plan that's right for you
+        </h1>
+        <ul>
+          <li className=" flex items-center gap-x-2 text-lg">
+            <CheckIcon className=" h-7 w-7 text-netflix" />
+            Watch all you want. Ad-free.
+          </li>
+          <li className=" flex items-center gap-x-2 text-lg">
+            <CheckIcon className=" h-7 w-7 text-netflix" />
+            Recommendations just for you.
+          </li>
+          <li className=" flex items-center gap-x-2 text-lg">
+            <CheckIcon className=" h-7 w-7 text-netflix" />
+            Change or cancel your plan anytime.
+          </li>
+        </ul>
+
+        <div className=" flex mt-4 flex-col space-y-4">
+          <div className="flex w-full items-center justify-center self-end md:w-3/5">
+            {products &&
+              products.map((product) => (
+                <div
+                  className={`planBox ${
+                    selectedPlan?.id === product.id
+                      ? `opacity-100 after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-2 after:border-transparent after:border-t-netflix after:content-[""]`
+                      : "opacity-60"
+                  }`}
+                  key={product.id}
+                  onClick={() => setSelectedPlan(product)}
+                >
+                  {product.name}
+                </div>
+              ))}
+          </div>
+
+          <Table products={products} />
+
+          <button>Subscribe</button>
+        </div>
+      </main>
     </>
   );
 }
