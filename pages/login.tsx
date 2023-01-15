@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { SubmitHandler } from "react-hook-form/dist/types";
+import { Spinner } from "../components/Spinner";
 import { useAuth } from "../hooks/useAuth";
 
 import netflixLogin from "../public/netflix-login.webp";
@@ -30,6 +31,7 @@ export default function Login() {
     } else {
       await signUp(data.email, data.password);
     }
+    return setLogin(false);
   };
 
   return (
@@ -99,9 +101,11 @@ export default function Login() {
 
           <button
             onClick={() => setLogin(true)}
-            className=" w-full py-3 rounded font-semibold bg-netflix"
+            className={` w-full py-3 rounded font-semibold bg-netflix transition duration-500 ${
+              login ? "opacity-60 cursor-not-allowed" : ""
+            }`}
           >
-            Sign In
+            {login ? <Spinner /> : "Sign In"}
           </button>
 
           <div className=" text-signup">

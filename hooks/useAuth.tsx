@@ -87,7 +87,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         router.push("/");
         setLoading(false);
       })
-      .catch((error) => alert("[{Error: User not found!}]"))
+      .catch((error) => alert("[{Error: User or password not found!}]"))
       .finally(() => setLoading(false));
   };
 
