@@ -16,6 +16,7 @@ interface Props {
 export function Plans({ products }: Props) {
   const { logout } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2]);
+  console.log(selectedPlan);
 
   return (
     <>
@@ -71,7 +72,7 @@ export function Plans({ products }: Props) {
                 <div
                   className={`planBox ${
                     selectedPlan?.id === product.id
-                      ? `opacity-100 after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-2 after:border-transparent after:border-t-netflix after:content-[""]`
+                      ? "planSelected"
                       : "opacity-60"
                   }`}
                   key={product.id}
@@ -82,7 +83,7 @@ export function Plans({ products }: Props) {
               ))}
           </div>
 
-          <Table products={products} />
+          <Table products={products} plan={selectedPlan} />
 
           <button>Subscribe</button>
         </div>

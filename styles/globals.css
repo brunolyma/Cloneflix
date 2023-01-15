@@ -43,6 +43,10 @@
     @apply relative mx-1.5 flex items-center justify-center h-20 w-[calc(100%/3)] bg-netflix rounded-sm font-semibold shadow cursor-pointer transition md:h-32 lg:mx-8;
   }
 
+  .planBox.planSelected {
+    @apply opacity-100 after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-2 after:border-transparent after:border-t-netflix after:content-[""];
+  }
+
   /* Table */
   .tableRow {
     @apply flex flex-wrap items-center font-medium;
