@@ -15,6 +15,7 @@ import {
   getProducts,
   Product,
 } from "@stripe/firestore-stripe-payments/lib/product";
+import { useSubscription } from "../hooks/useSubscription";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -39,11 +40,9 @@ export default function Home({
   documentaries,
   products,
 }: Props) {
-  console.log(products);
-
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
-  const subscription = false;
+  const subscription = useSubscription(user);
 
   if (loading || subscription === null) return null;
 

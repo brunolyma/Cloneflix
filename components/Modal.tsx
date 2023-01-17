@@ -119,7 +119,7 @@ export function Modal() {
             <h3 className=" font-bold text-2xl text-white">{movie?.title}</h3>
             <div className=" flex items-center space-x-2 text-sm">
               <p className=" font-semibold text-green-400">
-                {movie?.vote_average * 10}% Match
+                {(movie?.vote_average * 10).toFixed()}% Match
               </p>
               <p className=" font-light">
                 {movie?.release_date || movie?.first_air_date}

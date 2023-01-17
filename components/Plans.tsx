@@ -5,8 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
+import { loadCheckout } from "../lib/stripe";
 
 import netflixLogo from "../public/netflix-logo.svg";
+import { Spinner } from "./Spinner";
 import { Table } from "./Table";
 
 interface Props {
@@ -14,9 +16,16 @@ interface Props {
 }
 
 export function Plans({ products }: Props) {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2]);
-  console.log(selectedPlan);
+  const [isBillingLoading, setIsBillingLoading] = useState(false);
+
+  const subscribeToPlan = () => {
+    if (!user) return;
+
+    loadCheckout(selectedPlan?.prices[0].id!);
+    setIsBillingLoading(true);
+  };
 
   return (
     <>
@@ -46,7 +55,7 @@ export function Plans({ products }: Props) {
         </button>
       </header>
 
-      <main className=" max-w-5xl pt-28 pb-12 px-5 transition-all md:px-10">
+      <main className=" max-w-5xl mx-auto pt-28 pb-12 px-5 transition-all md:px-10">
         <h1 className=" mb-3 text-3xl font-medium">
           Choose the plan that's right for you
         </h1>
@@ -83,9 +92,17 @@ export function Plans({ products }: Props) {
               ))}
           </div>
 
-          <Table products={products} plan={selectedPlan} />
+          <Table products={products} selectedPlan={selectedPlan} />
 
-          <button>Subscribe</button>
+          <button
+            disabled={!selectedPlan || isBillingLoading}
+            className={`mx-auto w-11/12 bg-netflix py-4 rounded shadow text-xl hover:bg-netflix-hover md:w-[420px] ${
+              isBillingLoading && "opacity-60"
+            }`}
+            onClick={subscribeToPlan}
+          >
+            {isBillingLoading ? <Spinner /> : "Subscribe"}
+          </button>
         </div>
       </main>
     </>

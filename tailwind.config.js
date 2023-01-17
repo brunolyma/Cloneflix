@@ -14,6 +14,7 @@ module.exports = {
         focus: "#454545",
         light: "#e5e5e5",
         netflix: "#e50914",
+        "netflix-hover": "#f6121d",
         "modal-closebutton": "#181818",
         modal: "#2a2a2a",
         "light-hover": "#b3b3b3",
