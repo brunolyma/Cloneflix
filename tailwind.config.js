@@ -11,6 +11,7 @@ module.exports = {
         dark: "#010511",
         input: "#333",
         gray: "#808080",
+        "gray-light": "#838383",
         focus: "#454545",
         light: "#e5e5e5",
         netflix: "#e50914",

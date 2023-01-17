@@ -14,7 +14,6 @@ interface Props {
 export function Row({ title, movies }: Props) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [isMoved, setIsMoved] = useState(false);
-  console.log(movies);
 
   const handleClick = (direction: string) => {
     setIsMoved(true);

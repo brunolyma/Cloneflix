@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import netflixLogo from "../public/netflix-logo.svg";
 import netflixProfile from "../public/netflix-profile.webp";
+import { BasicMenu } from "./BasicMenu";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,6 +45,8 @@ export function Header() {
           />
         </Link>
 
+        <BasicMenu />
+
         <ul className="hidden space-x-4 md:flex">
           <li className="navlink">Home</li>
           <li className="navlink">Tv Shows</li>
@@ -57,16 +60,15 @@ export function Header() {
         <SearchIcon className="hidden h-6 w-6 md:inline" />
         <p className=" hidden lg:inline">Kids</p>
         <BellIcon className=" h-6 w-6" />
-        {/* <Link href={"/accounts"}> */}
-        <Image
-          onClick={logout}
-          src={netflixProfile}
-          alt="netflix logo"
-          width={32.1}
-          height={32.1}
-          className="cursor-pointer rounded"
-        />
-        {/* </Link> */}
+        <Link href={"/account"}>
+          <Image
+            src={netflixProfile}
+            alt="netflix logo"
+            width={32.1}
+            height={32.1}
+            className="cursor-pointer rounded"
+          />
+        </Link>
       </nav>
     </header>
   );

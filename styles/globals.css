@@ -9,7 +9,7 @@
   }
 
   header {
-    @apply flex items-center justify-between h-10 w-full fixed top-0 z-50 px-[4%] py-4 transition-all lg:h-16 lg:py-6;
+    @apply flex items-center justify-between h-10 w-full fixed top-0 z-50 px-[4%] py-6 transition-all lg:h-16 lg:py-8;
   }
 }
 
@@ -47,6 +47,14 @@
     @apply opacity-100 after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-2 after:border-transparent after:border-t-netflix after:content-[""];
   }
 
+  .accountBox {
+    @apply grid grid-cols-1 gap-x-4 mt-6 px-4 py-4 border md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0;
+  }
+
+  .membershipLink {
+    @apply cursor-pointer text-blue-500 hover:underline;
+  }
+
   /* Table */
   .tableRow {
     @apply flex flex-wrap items-center font-medium;
@@ -58,5 +66,22 @@
 
   .tableDataFeature {
     @apply w-[calc(100%/3)] p-2.5 text-center md:w-[calc(60%/3)] md:p-3.5;
+  }
+
+  /* MUI Menu */
+  .menu {
+    @apply md:hidden;
+  }
+
+  .menu .MuiPaper-root {
+    @apply !absolute !left-0 !rounded-none !border !border-gray !bg-black !text-white;
+  }
+
+  .menu .MuiList-root {
+    @apply !p-0;
+  }
+
+  .menu .MuiMenuItem-root {
+    @apply !block !w-72 !py-3.5 !text-center !text-sm !font-light !text-gray-light !transition !duration-150 first:cursor-default first:!font-normal first:!text-white hover:!bg-[#11100F];
   }
 }
