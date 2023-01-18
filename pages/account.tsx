@@ -64,8 +64,6 @@ export default function account({ products }: Props) {
 
         <div className="accountBox">
           <h4>Plan Details</h4>
-          {/* Find the current plan */}
-
           <div>
             {
               products.filter(
