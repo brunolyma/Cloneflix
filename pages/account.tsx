@@ -78,7 +78,10 @@ export default function account({ products }: Props) {
 
         <div className="accountBox">
           <h4 className="text-lg text-gray">Settings</h4>
-          <p className=" col-span-3 cursor-pointer text-blue-500 hover:underline">
+          <p
+            className=" col-span-3 cursor-pointer text-blue-500 hover:underline"
+            onClick={logout}
+          >
             Sign out of all devices
           </p>
         </div>
